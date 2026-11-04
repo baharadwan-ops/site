@@ -19,7 +19,9 @@ def set_attr(tag, name, value):
     new = f'{name}="{html.escape(str(value), quote=True)}"'
     if pat.search(tag):
         return pat.sub(new, tag, count=1)
-    return tag[:-1] + " " + new + ("/>" if tag.endswith("/>") else ">")
+    closing = "/>" if tag.endswith("/>") else ">"
+    base = tag[:-2] if tag.endswith("/>") else tag[:-1]
+    return base + " " + new + closing
 
 def local_source(url):
     rel = urllib.parse.unquote(url).split("?", 1)[0].split("#", 1)[0]
