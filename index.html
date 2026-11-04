@@ -1,863 +1,459 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+
+<html dir="rtl" lang="ar">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>معرض أعمالي المطور | Baha Radwan Portfolio V2</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Noto+Kufi+Arabic:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
-    
-    <style>
-        :root {
-            /* Light Mode Variables */
-            --bg-color: #ffffff;
-            --section-bg: #f5f5f5;
-            --text-color: #121212;
-            --secondary-text: #666;
-            --primary-color: #8E7CC3;
-            --card-bg: #ffffff;
-            --input-bg: #f9f9f9;
-            --input-border: #ddd;
-            --navbar-bg: rgba(255, 255, 255, 0.9);
-        }
-
-        [data-theme="dark"] {
-            /* Dark Mode Variables */
-            --bg-color: #0f0f0f;
-            --section-bg: #1a1a1a;
-            --text-color: #f5f5f5;
-            --secondary-text: #aaa;
-            --primary-color: #a394d1;
-            --card-bg: #1e1e1e;
-            --input-bg: #2a2a2a;
-            --input-border: #444;
-            --navbar-bg: rgba(15, 15, 15, 0.9);
-        }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            transition: background-color 0.4s ease, color 0.4s ease;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: 'Montserrat', 'Noto Kufi Arabic', sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-
-        /* Navigation */
-        nav {
-            padding: 20px 5%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            background: var(--navbar-bg);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid var(--input-border);
-        }
-
-        .logo {
-            font-weight: 900;
-            font-size: 1.2rem;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-        }
-
-        .nav-right {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 20px;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: var(--text-color);
-            font-weight: 700;
-            font-size: 0.9rem;
-            transition: 0.3s;
-        }
-
-        .nav-links a:hover {
-            color: var(--primary-color);
-        }
-
-        /* Dark Mode Toggle */
-        .theme-toggle {
-            background: none;
-            border: 1px solid var(--primary-color);
-            color: var(--primary-color);
-            padding: 5px 10px;
-            border-radius: 20px;
-            cursor: pointer;
-            font-size: 0.8rem;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-        }
-
-        /* Mobile Menu Button */
-        .mobile-menu-btn {
-            display: none;
-            font-size: 1.5rem;
-            cursor: pointer;
-            color: var(--text-color);
-        }
-
-        /* Parallax Hero Section */
-        .hero {
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            padding: 0 10%;
-            position: relative;
-            background-image: url('https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&q=80&w=2000');
-            background-attachment: fixed;
-            background-position: center;
-            background-repeat: no-repeat;
-            background-size: cover;
-        }
-
-        .hero-overlay {
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: linear-gradient(to left, rgba(0,0,0,0.7), transparent);
-            z-index: 1;
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 2;
-            color: white;
-            max-width: 700px;
-        }
-
-        .hero-content h1 {
-            font-size: clamp(2.5rem, 8vw, 4.5rem);
-            font-weight: 900;
-            line-height: 1.1;
-            margin-bottom: 20px;
-            text-transform: uppercase;
-        }
-
-        .hero-content p {
-            font-size: 1.2rem;
-            margin-bottom: 30px;
-            opacity: 0.9;
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 15px 40px;
-            background-color: var(--primary-color);
-            color: white;
-            text-decoration: none;
-            font-weight: 700;
-            border-radius: 50px;
-            transition: 0.3s;
-            border: none;
-        }
-
-        .btn:hover {
-            transform: scale(1.05);
-            box-shadow: 0 10px 20px rgba(142, 124, 195, 0.4);
-        }
-
-        /* Portfolio Section */
-        .portfolio-section {
-            padding: 100px 0;
-            background-color: var(--bg-color);
-        }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 80px;
-        }
-
-        .section-title h2 {
-            font-size: 3rem;
-            font-weight: 900;
-            text-transform: uppercase;
-        }
-
-        /* Project Styles */
-        .project-container {
-            max-width: 1000px;
-            margin: 0 auto 120px auto;
-            padding: 0 20px;
-        }
-
-        .project-header {
-            margin-bottom: 30px;
-            border-right: 5px solid var(--primary-color);
-            padding-right: 20px;
-        }
-
-        .project-info h3 {
-            font-size: 1.8rem;
-            font-weight: 900;
-        }
-
-        .project-tag {
-            color: var(--primary-color);
-            font-weight: 700;
-            text-transform: uppercase;
-            font-size: 0.8rem;
-        }
-
-        /* Carousel */
-        .swiper {
-            width: 100%;
-            border-radius: 20px;
-            overflow: hidden;
-        }
-        
-        /* تأثير التمرير المستمر والبطيء (Continuous Sliding) */
-        .swiper-wrapper {
-            transition-timing-function: linear !important;
-        }
-
-        .swiper-slide {
-            position: relative;
-            overflow: hidden;
-            cursor: pointer;
-        }
-
-        .swiper-slide img {
-            width: 100%;
-            height: 650px;
-            object-fit: cover;
-            display: block;
-            /* تم إزالة transition الخاص بالـ scale لتجنب التعارض مع الأنيميشن المستمر */
-        }
-
-        /* Before & After Slider */
-        .ba-container {
-            position: relative;
-            width: 100%;
-            height: 650px;
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-        }
-
-        .ba-img {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-            pointer-events: none;
-        }
-
-        .ba-after {
-            clip-path: polygon(0 0, 50% 0, 50% 100%, 0 100%);
-        }
-
-        .ba-slider {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            opacity: 0;
-            cursor: ew-resize;
-            z-index: 10;
-            touch-action: pan-y; /* إصلاح حركة التمرير في الجوال */
-        }
-
-        .ba-handle-line {
-            position: absolute;
-            top: 0;
-            left: 50%;
-            width: 4px;
-            height: 100%;
-            background-color: white;
-            z-index: 5;
-            pointer-events: none;
-            transform: translateX(-50%);
-            box-shadow: 0 0 15px rgba(0,0,0,0.5);
-        }
-
-        .ba-handle-button {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 46px;
-            height: 46px;
-            background-color: var(--primary-color);
-            border: 3px solid white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 18px;
-            box-shadow: 0 0 15px rgba(0,0,0,0.4);
-        }
-
-        /* --- Social Media Floating Menu --- */
-        .social-menu-wrapper {
-            position: fixed;
-            bottom: 30px;
-            left: 30px;
-            z-index: 1001;
-            width: 65px;
-            height: 65px;
-        }
-
-        .social-menu-wrapper::before {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            transition: height 0.3s;
-            z-index: 1000;
-        }
-        .social-menu-wrapper:hover::before {
-            height: 350px;
-        }
-
-        .main-social-toggle {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: var(--primary-color);
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 30px;
-            cursor: pointer;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
-            transition: 0.3s;
-            z-index: 1002;
-        }
-
-        .social-menu-wrapper:hover .main-social-toggle {
-            transform: scale(1.1);
-            background-color: #333;
-        }
-
-        .social-item {
-            position: absolute;
-            bottom: 7.5px; 
-            left: 7.5px;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: white;
-            text-decoration: none;
-            font-size: 22px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-            opacity: 0;
-            transform: translateY(0) scale(0); 
-            pointer-events: none;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
-            z-index: 1001;
-        }
-
-        .social-menu-wrapper:hover .social-item {
-            opacity: 1;
-            pointer-events: auto;
-        }
-
-        .social-menu-wrapper:hover .whatsapp-btn-sub { transform: translateY(-75px) scale(1); transition-delay: 0.05s; }
-        .social-menu-wrapper:hover .telegram-btn { transform: translateY(-140px) scale(1); transition-delay: 0.1s; }
-        .social-menu-wrapper:hover .instagram-btn { transform: translateY(-205px) scale(1); transition-delay: 0.15s; }
-        .social-menu-wrapper:hover .facebook-btn { transform: translateY(-270px) scale(1); transition-delay: 0.2s; }
-
-        .whatsapp-btn-sub { background-color: #25d366; transition-delay: 0.2s; }
-        .telegram-btn { background-color: #0088cc; transition-delay: 0.15s; }
-        .instagram-btn { background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%); transition-delay: 0.1s; }
-        .facebook-btn { background-color: #1877f2; transition-delay: 0.05s; }
-
-        /* Form Styling */
-        .contact-section {
-            background-color: var(--section-bg);
-            padding: 100px 10%;
-            text-align: center;
-        }
-
-        .contact-form {
-            max-width: 600px;
-            margin: 50px auto 0;
-            text-align: right;
-            background: var(--card-bg);
-            padding: 40px;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-        }
-
-        .form-group {
-            margin-bottom: 25px;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 10px;
-            font-weight: 700;
-        }
-
-        .form-group input, .form-group textarea {
-            width: 100%;
-            padding: 15px;
-            background: var(--input-bg);
-            border: 1px solid var(--input-border);
-            color: var(--text-color);
-            border-radius: 10px;
-            font-family: inherit;
-        }
-
-        .submit-btn {
-            width: 100%;
-            background: var(--text-color);
-            color: var(--bg-color);
-            border: none;
-            padding: 18px;
-            font-weight: 900;
-            text-transform: uppercase;
-            border-radius: 10px;
-            cursor: pointer;
-            transition: 0.3s;
-        }
-
-        .submit-btn:hover {
-            background: var(--primary-color);
-            color: white;
-        }
-
-        /* Footer */
-        footer {
-            padding: 50px 20px 30px;
-            background: var(--bg-color);
-            color: var(--secondary-text);
-            border-top: 1px solid var(--input-border);
-        }
-
-        .footer-content {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-around;
-            gap: 30px;
-            max-width: 1000px;
-            margin: 0 auto 30px;
-            text-align: center;
-        }
-
-        .footer-content h3 {
-            color: var(--text-color);
-            margin-bottom: 15px;
-        }
-
-        .footer-links a {
-            display: block;
-            color: var(--secondary-text);
-            text-decoration: none;
-            margin-bottom: 10px;
-            transition: color 0.3s;
-        }
-
-        .footer-links a:hover {
-            color: var(--primary-color);
-        }
-
-        .footer-social {
-            display: flex;
-            gap: 15px;
-            justify-content: center;
-            font-size: 1.5rem;
-        }
-
-        .footer-social a {
-            color: var(--secondary-text);
-            transition: color 0.3s, transform 0.3s;
-        }
-
-        .footer-social a:hover {
-            color: var(--primary-color);
-            transform: scale(1.1);
-        }
-
-        /* Mobile Styles */
-        @media (max-width: 768px) {
-            .mobile-menu-btn { display: block; }
-            .nav-links {
-                display: none;
-                position: absolute;
-                top: 100%;
-                left: 0;
-                width: 100%;
-                background: var(--navbar-bg);
-                flex-direction: column;
-                text-align: center;
-                padding: 20px 0;
-                border-bottom: 1px solid var(--input-border);
-            }
-            .nav-links.active { display: flex; }
-            .hero-content h1 { font-size: 2.5rem; }
-            .swiper-slide img, .ba-container { height: 450px; }
-        }
-    </style>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="تصميم إعلانات بصرية ثابتة للمنتجات والخدمات والعروض والأنشطة المختلفة، من أي مكان. تصاميم مخصصة وجاهزة للنشر وفق هدفك والمعلومات التي تعتمدها." name="description"/>
+<meta content="#171521" name="theme-color"/>
+<link as="image" href="0%20(2).webp" rel="preload"/>
+<meta content="website" property="og:type"/>
+<meta content="تصميم إعلانات بصرية للمنتجات والخدمات | بهاء رضوان" property="og:title"/>
+<meta content="تصاميم إعلانية بصرية ثابتة للمنتجات والخدمات والعروض والأنشطة المختلفة، دون حصر الخدمة في مجال أو موقع محدد." property="og:description"/>
+<title>تصميم إعلانات بصرية للمنتجات والخدمات | بهاء رضوان</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="anonymous" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/><style>
+    :root {
+      color-scheme: light;
+      --bg: #ffffff;
+      --surface: #f6f5f8;
+      --surface-strong: #efedf4;
+      --text: #171521;
+      --muted: #5d5968;
+      --primary: #8069b5;
+      --primary-dark: #624b98;
+      --border: #e5e1ec;
+      --nav: rgba(255,255,255,.94);
+      --shadow: 0 18px 55px rgba(31,24,48,.11);
+      --radius: 22px;
+    }
+    [data-theme="dark"] {
+      color-scheme: dark;
+      --bg: #111017;
+      --surface: #1b1923;
+      --surface-strong: #262331;
+      --text: #f5f2fa;
+      --muted: #c0bacb;
+      --primary: #a894d8;
+      --primary-dark: #8b74c4;
+      --border: #363241;
+      --nav: rgba(17,16,23,.94);
+      --shadow: 0 18px 55px rgba(0,0,0,.25);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 92px; }
+    body { margin:0; font-family:"IBM Plex Sans Arabic","Noto Sans Arabic",Tahoma,"Segoe UI",Arial,sans-serif; font-size:16px; background:var(--bg); color:var(--text); line-height:1.8; }
+    a { color:inherit; }
+    button,input,textarea { font:inherit; }
+    .container { width:min(1120px, calc(100% - 40px)); margin-inline:auto; }
+    .site-nav { position:sticky; top:0; z-index:50; background:var(--nav); backdrop-filter:blur(12px); border-bottom:1px solid var(--border); }
+    .nav-inner { min-height:76px; display:flex; align-items:center; justify-content:space-between; gap:22px; }
+    .brand { font-weight:700; letter-spacing:.5px; text-decoration:none; font-size:1.12rem; white-space:nowrap; }
+    .nav-side { display:flex; align-items:center; gap:20px; }
+    .nav-links { display:flex; align-items:center; gap:22px; }
+    .nav-links a { text-decoration:none; color:var(--muted); font-size:.91rem; font-weight:700; }
+    .nav-links a:hover { color:var(--primary-dark); }
+    .nav-actions { display:flex; align-items:center; gap:10px; }
+    .theme-toggle,.menu-toggle { border:1px solid var(--border); background:var(--bg); color:var(--text); border-radius:999px; cursor:pointer; }
+    .theme-toggle { display:inline-flex; align-items:center; justify-content:center; gap:10px; min-height:42px; padding:9px 15px; white-space:nowrap; }
+    .theme-icon { display:inline-flex; align-items:center; justify-content:center; flex:0 0 20px; width:20px; min-height:20px; line-height:1; font-size:1.08rem; }
+    .theme-label { line-height:1.35; }
+    .menu-toggle { display:none; font-size:1.1rem; }
+    .btn { display:inline-flex; align-items:center; justify-content:center; gap:9px; min-height:48px; padding:12px 22px; border-radius:999px; text-decoration:none; border:1px solid transparent; font-weight:700; transition:transform .18s ease, background-color .18s ease; }
+    .btn:hover { transform:translateY(-2px); }
+    .btn-primary { background:var(--primary); color:#fff; box-shadow:0 10px 25px rgba(128,105,181,.24); }
+    .btn-primary:hover { background:var(--primary-dark); }
+    .btn-outline { border-color:rgba(255,255,255,.55); color:#fff; background:rgba(255,255,255,.08); }
+    .btn-small { min-height:40px; padding:9px 16px; font-size:.9rem; }
+    .hero { position:relative; min-height:540px; display:flex; align-items:center; overflow:hidden; color:var(--text); background:linear-gradient(135deg,#f1edf8 0%,#fbfaff 54%,#eee8f7 100%); }
+    [data-theme="dark"] .hero { background:linear-gradient(135deg,#1d1928 0%,#15131d 54%,#252033 100%); }
+    .hero-layout { display:grid; grid-template-columns:minmax(0,1.08fr) minmax(340px,.92fr); align-items:center; gap:38px; padding-block:34px; }
+    .hero-content { position:relative; z-index:1; width:min(700px,100%); padding-block:34px; }
+    .hero-visual { position:relative; width:min(100%,520px); min-width:0; justify-self:center; display:flex; align-items:center; justify-content:center; overflow:hidden; aspect-ratio:1/1; border:1px solid rgba(128,105,181,.16); border-radius:26px; background:#fff; box-shadow:0 24px 64px rgba(31,24,48,.18); }
+    .hero-visual img { display:block; width:100%; height:100%; object-fit:contain; object-position:center; background:#fff; }
+    .hero-kicker { display:inline-flex; align-items:center; gap:9px; color:var(--primary-dark); background:rgba(128,105,181,.10); border:1px solid rgba(128,105,181,.22); padding:7px 13px; border-radius:999px; font-size:.87rem; font-weight:700; }
+    [data-theme="dark"] .hero-kicker { color:#d8cafa; background:rgba(168,148,216,.14); border-color:rgba(168,148,216,.25); }
+    .hero h1 { margin:20px 0 15px; font-size:clamp(2.2rem,4.8vw,3.65rem); line-height:1.28; letter-spacing:0; font-weight:700; max-width:680px; }
+    .hero p { color:var(--muted); font-size:clamp(1rem,2vw,1.12rem); max-width:620px; margin:0 0 24px; }
+    .hero-actions { display:flex; flex-wrap:wrap; align-items:center; gap:12px; }
+    .hero .btn-outline { border-color:var(--border); color:var(--primary-dark); background:rgba(255,255,255,.72); }
+    [data-theme="dark"] .hero .btn-outline { border-color:var(--border); color:var(--text); background:rgba(255,255,255,.06); }
+    .hero-note { margin-top:16px; font-size:.86rem; color:var(--muted); }
+    .section { padding:64px 0; }
+    .section-soft { background:var(--surface); }
+    .section-heading { max-width:740px; margin:0 auto 42px; text-align:center; }
+    .eyebrow { display:block; color:var(--primary-dark); font-size:.82rem; font-weight:700; margin-bottom:8px; }
+    [data-theme="dark"] .eyebrow { color:#c3b0f0; }
+    .section-heading h2 { margin:0 0 10px; font-size:clamp(1.7rem,3.5vw,2.35rem); line-height:1.38; font-weight:700; }
+    .section-heading p { margin:0; color:var(--muted); }
+    .service-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:18px; }
+    .service-card { background:var(--bg); border:1px solid var(--border); border-radius:var(--radius); padding:26px; box-shadow:0 8px 28px rgba(31,24,48,.035); }
+    .service-icon { width:46px; height:46px; display:grid; place-items:center; border-radius:14px; background:var(--surface-strong); color:var(--primary-dark); margin-bottom:17px; }
+    [data-theme="dark"] .service-icon { color:#d8cafa; }
+    .service-icon svg { width:23px; height:23px; stroke:currentColor; fill:none; stroke-width:1.8; stroke-linecap:round; stroke-linejoin:round; }
+    .service-card h3 { margin:0 0 8px; font-size:1.12rem; }
+    .service-card p { margin:0; color:var(--muted); font-size:.94rem; }
+    .trust-note { margin:24px auto 0; max-width:880px; padding:17px 20px; border:1px solid var(--border); border-radius:16px; color:var(--muted); background:var(--bg); font-size:.91rem; text-align:center; }
+    .portfolio-intro { max-width:850px; margin:-12px auto 42px; padding:17px 20px; background:var(--surface); border-right:4px solid var(--primary); border-radius:12px; color:var(--muted); }
+    .gallery-block { max-width:1000px; margin:0 auto 34px; }
+    .gallery-heading { display:flex; align-items:end; justify-content:space-between; gap:20px; margin-bottom:18px; }
+    .gallery-heading h3 { margin:0 0 5px; font-size:clamp(1.35rem,3vw,1.8rem); }
+    .gallery-heading p { margin:0; color:var(--muted); font-size:.93rem; }
+    .gallery-viewport { position:relative; isolation:isolate; }
+    .gallery-controls { position:absolute; inset:0; z-index:4; display:block; direction:ltr; pointer-events:none; }
+    .gallery-arrow { position:absolute; top:50%; width:44px; height:44px; display:grid; place-items:center; padding:0; transform:translateY(-50%); border-radius:50%; border:1px solid rgba(255,255,255,.72); background:rgba(28,24,37,.76); color:#fff; box-shadow:0 4px 16px rgba(0,0,0,.24); cursor:pointer; pointer-events:auto; backdrop-filter:blur(7px); }
+    .gallery-prev { left:14px; }
+    .gallery-next { right:14px; }
+    .gallery-arrow:disabled { opacity:.38; cursor:default; box-shadow:none; }
+    .gallery-arrow svg { width:19px; height:19px; display:block; fill:none; stroke:currentColor; stroke-width:2; stroke-linecap:round; stroke-linejoin:round; }
+    .gallery-track { display:flex; direction:ltr; overflow-x:auto; overflow-y:hidden; scroll-snap-type:x mandatory; scroll-behavior:smooth; scrollbar-width:none; border-radius:var(--radius); border:1px solid var(--border); background:#15131c; overscroll-behavior-x:contain; -webkit-overflow-scrolling:touch; }
+    .gallery-track::-webkit-scrollbar { display:none; }
+    .gallery-slide { flex:0 0 100%; min-width:100%; min-height:440px; display:flex; flex-direction:column; align-items:center; justify-content:center; scroll-snap-align:start; scroll-snap-stop:always; padding:14px; }
+    .gallery-slide img { display:block; width:100%; height:410px; object-fit:contain; }
+    .slide-caption { margin:8px 0 0; color:#eeeaf5; font-size:.85rem; text-align:center; }
+    .gallery-hint { display:none; margin:9px 0 0; text-align:center; color:var(--muted); font-size:.78rem; }
+    .gallery-secondary { margin-top:18px; }
+    .archive-galleries { max-width:1000px; margin:24px auto 0; border:1px solid var(--border); border-radius:18px; background:var(--bg); overflow:hidden; }
+    .archive-galleries > summary { cursor:pointer; list-style:none; padding:18px 22px; color:var(--primary-dark); font-weight:700; }
+    [data-theme="dark"] .archive-galleries > summary { color:#d8cafa; }
+    .archive-galleries > summary::-webkit-details-marker { display:none; }
+    .archive-galleries > summary::after { content:"＋"; float:left; font-size:1.1rem; }
+    .archive-galleries[open] > summary::after { content:"−"; }
+    .archive-note { margin:0; padding:0 22px 10px; color:var(--muted); font-size:.88rem; }
+    .archive-galleries:not([open]) > .archive-note { display:none; }
+    .archive-galleries[open] .gallery-secondary { padding:0 18px; }
+    .process-grid { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:14px; counter-reset:steps; }
+    .process-step { counter-increment:steps; padding:21px; background:var(--bg); border:1px solid var(--border); border-radius:18px; }
+    .process-step::before { content:counter(steps,decimal-leading-zero); display:inline-grid; place-items:center; width:38px; height:38px; margin-bottom:12px; border-radius:12px; background:var(--surface-strong); color:var(--primary-dark); font-weight:700; }
+    [data-theme="dark"] .process-step::before { color:#d8cafa; }
+    .process-step h3 { margin:0 0 7px; font-size:1rem; }
+    .process-step p { margin:0; color:var(--muted); font-size:.89rem; }
+    .request-info { margin-top:25px; padding:20px 23px; border-radius:18px; background:var(--surface-strong); color:var(--muted); }
+    .request-info strong { color:var(--text); }
+    .contact-wrap { display:grid; grid-template-columns:1fr .9fr; gap:28px; align-items:start; }
+    .contact-copy h2 { margin:0 0 12px; font-size:clamp(1.8rem,4vw,2.6rem); }
+    .contact-copy p { color:var(--muted); margin:0 0 22px; max-width:540px; }
+    .contact-options { display:flex; flex-wrap:wrap; gap:12px; }
+    .contact-card { padding:24px; border-radius:var(--radius); border:1px solid var(--border); background:var(--bg); }
+    .contact-card h3 { margin:0 0 14px; }
+    .contact-card p { color:var(--muted); font-size:.9rem; margin:0 0 18px; }
+    .contact-form { display:grid; gap:13px; }
+    .form-group label { display:block; margin-bottom:6px; font-size:.9rem; font-weight:700; }
+    .form-group input,.form-group textarea { display:block; width:100%; padding:12px 13px; border:1px solid var(--border); border-radius:12px; background:var(--surface); color:var(--text); }
+    .form-group textarea { resize:vertical; min-height:115px; }
+    .submit-btn { width:100%; min-height:46px; border:0; border-radius:12px; cursor:pointer; background:var(--text); color:var(--bg); font-weight:700; }
+    .contact-small { color:var(--muted); font-size:.8rem; margin-top:12px; }
+    footer { padding:30px 0; border-top:1px solid var(--border); background:var(--bg); }
+    .footer-inner { display:flex; align-items:center; justify-content:space-between; gap:18px; flex-wrap:wrap; color:var(--muted); font-size:.88rem; }
+    .footer-links { display:flex; gap:16px; flex-wrap:wrap; }
+    .footer-links a { text-decoration:none; }
+    :focus-visible { outline:3px solid var(--primary); outline-offset:3px; }
+    @media (max-width: 850px) {
+      .nav-links { gap:13px; } .nav-links a { font-size:.84rem; }
+      .hero-layout { grid-template-columns:minmax(0,1fr) minmax(290px,.9fr); gap:22px; }
+      .hero h1 { font-size:clamp(2.1rem,4.6vw,3.5rem); }
+      .hero-visual { width:min(100%,500px); border-radius:24px; }
+      .service-grid { grid-template-columns:1fr 1fr; }
+      .process-grid { grid-template-columns:1fr 1fr; }
+      .contact-wrap { grid-template-columns:1fr; }
+    }
+    @media (max-width: 680px) {
+      .container { width:min(100% - 28px, 560px); }
+      .nav-inner { min-height:66px; gap:10px; }
+      .brand { font-size:.96rem; }
+      .nav-side { gap:8px; }
+      .menu-toggle { display:inline-flex; align-items:center; justify-content:center; width:40px; height:40px; padding:0; }
+      .nav-links { display:none; position:absolute; top:100%; right:0; left:0; padding:12px 18px 18px; flex-direction:column; align-items:stretch; background:var(--nav); border-bottom:1px solid var(--border); box-shadow:var(--shadow); }
+      .nav-links.active { display:flex; }
+      .nav-links a { padding:8px 4px; font-size:.94rem; }
+      .nav-actions .btn { display:none; }
+      .theme-toggle { width:40px; height:40px; display:inline-grid; place-items:center; padding:0; font-size:.95rem; }
+      .theme-label { display:none; }
+      .hero { min-height:0; }
+      .hero-layout { grid-template-columns:1fr; gap:20px; padding-block:20px 30px; }
+      .hero-visual { grid-row:1; width:min(100%,430px); margin:0 auto; border-radius:22px; aspect-ratio:1/1; }
+      .hero-content { grid-row:2; padding-block:0; }
+      .hero h1 { font-size:clamp(1.95rem,8vw,2.7rem); margin-top:13px; line-height:1.35; }
+      .hero p { font-size:1rem; }
+      .hero-actions .btn { width:100%; }
+      .section { padding:40px 0; }
+      .section-heading { margin-bottom:30px; }
+      .service-grid { grid-template-columns:repeat(2,minmax(0,1fr)); gap:10px; }
+      .service-card { padding:15px; }
+      .service-card:last-child { grid-column:1/-1; }
+      .service-card h3 { font-size:1rem; }
+      .service-card p { font-size:.86rem; line-height:1.65; }
+      .service-icon { width:40px; height:40px; margin-bottom:11px; }
+      .gallery-block { margin-bottom:52px; }
+      .gallery-heading { align-items:center; }
+      .gallery-heading p { font-size:.84rem; }
+      .gallery-controls { display:none; }
+      .gallery-track { border-radius:16px; }
+      .gallery-slide { min-height:0; padding:10px; }
+      .gallery-slide img { height:auto; max-height:min(48vh,310px); object-fit:contain; }
+      .slide-caption { font-size:.78rem; }
+      .gallery-hint { display:block; }
+      .archive-galleries > summary { padding:15px 16px; font-size:.9rem; }
+      .archive-galleries[open] .gallery-secondary { padding:0 10px; }
+      .process-grid { grid-template-columns:1fr 1fr; gap:10px; }
+      .process-step { padding:16px; }
+      .contact-card { padding:19px; }
+      .footer-inner { justify-content:center; text-align:center; }
+      .footer-links { justify-content:center; }
+    }
+    @media (max-width: 390px) {
+      .theme-toggle { width:42px; height:42px; min-height:42px; padding:0; gap:0; }
+      .process-grid { grid-template-columns:1fr 1fr; gap:9px; }
+      .process-step { padding:13px; }
+      .process-step h3 { font-size:.9rem; }
+      .process-step p { font-size:.82rem; line-height:1.6; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior:auto; }
+      *,*::before,*::after { scroll-behavior:auto !important; transition-duration:.01ms !important; animation-duration:.01ms !important; animation-iteration-count:1 !important; }
+    }
+  </style>
+<!-- V4: selected repository-root assets: 0 (2).webp and 0 (3).webp; 0 (1).webp not used. -->
 </head>
 <body data-theme="light">
-
-    <div class="social-menu-wrapper">
-        <div class="main-social-toggle">
-            <i class="fas fa-comment-dots"></i>
-        </div>
-        <a href="https://wa.me/+972595936527" class="social-item whatsapp-btn-sub" target="_blank" title="واتساب">
-            <i class="fab fa-whatsapp"></i>
-        </a>
-        <a href="https://t.me/Bahaeldeen94" class="social-item telegram-btn" target="_blank" title="تيليجرام">
-            <i class="fab fa-telegram-plane"></i>
-        </a> <!--
-        <a href="https://instagram.com/Bahaeldeen94" class="social-item instagram-btn" target="_blank" title="انستجرام">
-            <i class="fab fa-instagram"></i>
-        </a>
-        <a href="https://facebook.com/username" class="social-item facebook-btn" target="_blank" title="فيسبوك">
-            <i class="fab fa-facebook-f"></i>
-        </a>-->
-    </div>
-
-    <nav>
-        <div class="logo">BAHA RADWAN</div>
-        <div class="nav-right">
-            <div class="nav-links" id="navLinks">
-                <a href="#portfolio">الأعمال</a>
-                <a href="#contact">تواصل معي</a>
-            </div>
-            <button class="theme-toggle" id="themeToggle">
-                <i class="fas fa-moon"></i> <span>الوضع الليلي</span>
-            </button>
-            <div class="mobile-menu-btn" id="mobileMenuBtn">
-                <i class="fas fa-bars"></i>
-            </div>
-        </div>
-    </nav>
-
-    <section class="hero">
-        <div class="hero-overlay"></div>
-        <div class="hero-content" data-aos="fade-left">
-            <span class="project-tag">Project Developer</span>
-            <h1>نحول أفكارك<br>إلى واقع بصري</h1>
-            <p>مرحباً بك في عالمي الإبداعي، حيث تلتقي الدقة بالفن لصناعة علامات تجارية لا تُنسى.</p>
-            <a href="#portfolio" class="btn">شاهد مشاريعي</a>
-        </div>
-    </section>
-
-    <section class="portfolio-section" id="portfolio">
-        <div class="section-title" data-aos="fade-up">
-            <h2>أحدث المشاريع</h2>
-            <p style="color: var(--secondary-text)">تصفح الكاروسيل لرؤية التفاصيل</p>
-        </div>
-
-        <div class="project-container" data-aos="fade-up">
-            <div class="project-header">
-                <span class="project-tag">عيد الأضحي</span>
-                <h3>01. عيد الأضحي 2026/1447</h3>
-            </div>
-            <div class="swiper mySwiper">
-                <div class="swiper-wrapper">
-                    <div class="swiper-slide">
-                        <img src="al-Adha/001.jpg" alt="Work 1">
-                    </div>
-                    <div class="swiper-slide">
-                        <img src="al-Adha/002.jpg" alt="Work 1">
-                    </div>
-                                        <div class="swiper-slide">
-                        <img src="al-Adha/003.jpg" alt="Work 1">
-                    </div>
-                                        <div class="swiper-slide">
-                        <img src="al-Adha/004.jpg" alt="Work 1">
-                    </div>
-                                        <div class="swiper-slide">
-                        <img src="al-Adha/005.jpg" alt="Work 1">
-                    </div>
-                                        <div class="swiper-slide">
-                        <img src="al-Adha/006.jpg" alt="Work 1">
-                    </div>
-                    <div class="swiper-slide">
-                        <img src="al-Adha/007.jpg" alt="Work 1">
-                    </div>
-                                        <div class="swiper-slide">
-                        <img src="al-Adha/008.jpg" alt="Work 1">
-                    </div>
-                                        <div class="swiper-slide">
-                        <img src="al-Adha/009.jpg" alt="Work 1">
-                    </div>
-                                        <div class="swiper-slide">
-                        <img src="al-Adha/010.jpg" alt="Work 1">
-                    </div>
-                        <div class="swiper-slide">
-                        <img src="al-Adha/011.jpg" alt="Work 1">
-                    </div>
-                </div>
-                <div class="swiper-pagination"></div>
-                <div class="swiper-button-next"></div>
-                <div class="swiper-button-prev"></div>
-            </div>
-        </div>
-
-                <div class="project-container" data-aos="fade-up">
-            <div class="project-header">
-                <span class="project-tag">portfolio 2026</span>
-                <h3>02. من أعمالي</h3>
-            </div>
-            <div class="swiper mySwiper">
-                <div class="swiper-wrapper">
-                    <div class="swiper-slide">
-                        <img src="img/img-001.jpg" alt="Work 1">
-                    </div>
-                    <div class="swiper-slide">
-                        <img src="img/img-002.jpg" alt="Work 2">
-                    </div>
-                    <div class="swiper-slide">
-                        <img src="img/img-003.jpg" alt="Work 3">
-                    </div>
-                                        <div class="swiper-slide">
-                        <img src="img/img-004.jpg" alt="Work 3">
-                    </div>
-                    <div class="swiper-slide">
-                        <img src="img/img-005.jpg" alt="Work 3">
-                    </div>
-                    <div class="swiper-slide">
-                        <img src="img/img-006.jpg" alt="Work 3">
-                    </div>
-                                        <div class="swiper-slide">
-                        <img src="img/img-007.jpg" alt="Work 3">
-                    </div>
-                    <div class="swiper-slide">
-                        <img src="img/img-008.jpg" alt="Work 3">
-                    </div>
-                    <div class="swiper-slide">
-                        <img src="img/img-009.jpg" alt="Work 3">
-                    </div>
-                                        <div class="swiper-slide">
-                        <img src="img/img-010.jpg" alt="Work 3">
-                    </div>
-                    <div class="swiper-slide">
-                        <img src="img/img-011.jpg" alt="Work 3">
-                    </div>
-                    
-                </div>
-                <div class="swiper-pagination"></div>
-                <div class="swiper-button-next"></div>
-                <div class="swiper-button-prev"></div>
-            </div>
-        </div>
-        <!--
-        <div class="project-container" data-aos="fade-up" data-aos-delay="200">
-            <div class="project-header">
-                <span class="project-tag">Projects Showcase</span>
-                <h3>03. عرض المشاريع</h3>
-            </div>
-
-            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:25px;">
-                
-                <div style="background:var(--card-bg);border-radius:20px;overflow:hidden;box-shadow:0 10px 30px rgba(0,0,0,0.08);">
-                    <img src="img/clothe (1).jpg" style="width:100%;height:240px;object-fit:cover;">
-                    <div style="padding:20px;">
-                        <h4 style="margin-bottom:10px;">مشروع الهوية البصرية</h4>
-                        <p style="color:var(--secondary-text);font-size:0.95rem;">
-                            تصميم هوية بصرية احترافية تجمع بين الحداثة والبساطة لتقديم تجربة بصرية متكاملة.
-                        </p>
-                    </div>
-                </div>
-
-                <div style="background:var(--card-bg);border-radius:20px;overflow:hidden;box-shadow:0 10px 30px rgba(0,0,0,0.08);">
-                    <img src="img/clinic (1).png" style="width:100%;height:240px;object-fit:cover;">
-                    <div style="padding:20px;">
-                        <h4 style="margin-bottom:10px;">مشروع الحملات الإعلانية</h4>
-                        <p style="color:var(--secondary-text);font-size:0.95rem;">
-                            تنفيذ تصاميم إعلانية عصرية تساعد العلامات التجارية على جذب العملاء ورفع التفاعل.
-                        </p>
-                    </div>
-                </div>
-
-                <div style="background:var(--card-bg);border-radius:20px;overflow:hidden;box-shadow:0 10px 30px rgba(0,0,0,0.08);">
-                    <img src="img/resturent (3).png" style="width:100%;height:240px;object-fit:cover;">
-                    <div style="padding:20px;">
-                        <h4 style="margin-bottom:10px;">مشروع المحتوى البصري</h4>
-                        <p style="color:var(--secondary-text);font-size:0.95rem;">
-                            تطوير محتوى بصري احترافي يعكس هوية المشروع ويمنح تجربة جذابة للمستخدم.
-                        </p>
-                    </div>
-                </div>
-
-            </div>
-       
-    
-                <div class="swiper-pagination"></div>
-                <div class="swiper-button-next"></div>
-                <div class="swiper-button-prev"></div>
-            </div>
-        </div>
-    -->
-    </section>
-
-<section class="contact-section" id="contact">
-    <div data-aos="zoom-in">
-        <h2>لنعمل معاً</h2>
-        <p>اترك رسالتك وسأقوم بالرد عليك في أقرب وقت ممكن</p>
-    </div>
-    <!-- تم إضافة معرف id="contactForm" للتحكم به عبر الجافاسكريبت -->
-    <form class="contact-form" id="contactForm" action="https://formspree.io/f/mredvolg" method="POST" data-aos="fade-up">
-        <div class="form-group">
-            <label>الاسم بالكامل</label>
-            <!-- pattern=".*\S.*" تضمن ألا يكون الاسم عبارة عن مسافات فارغة فقط -->
-            <input type="text" name="name" id="userName" placeholder="مثلاً: محمد علي" required pattern=".*\S.*" title="يرجى إدخال الاسم كاملاً">
-        </div>
-        <div class="form-group">
-            <label>البريد الإلكتروني</label>
-            <input type="email" name="email" id="userEmail" placeholder="email@example.com" required>
-        </div>
-        <div class="form-group">
-            <label>رسالتك</label>
-            <textarea rows="5" name="message" id="userMessage" placeholder="اكتب تفاصيل مشروعك هنا..." required></textarea>
-        </div>
-        <button type="submit" class="submit-btn">إرسال الرسالة</button>
-    </form>
+<header class="site-nav">
+<div class="container nav-inner">
+<a aria-label="بهاء رضوان - الصفحة الرئيسية" class="brand" href="#top">BAHA RADWAN</a>
+<div class="nav-side">
+<nav aria-label="التنقل الرئيسي" class="nav-links" id="navLinks">
+<a href="#service">الخدمة</a>
+<a href="#portfolio">النماذج</a>
+<a href="#process">طريقة العمل</a>
+<a href="#contact">التواصل</a>
+</nav>
+<div class="nav-actions">
+<a class="btn btn-primary btn-small" href="https://wa.me/972595936527?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%20%D8%B9%D9%84%D9%8A%D9%83%D9%85%D8%8C%20%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%A7%D9%84%D8%A7%D8%B3%D8%AA%D9%81%D8%B3%D8%A7%D8%B1%20%D8%B9%D9%86%20%D8%AA%D8%B5%D9%85%D9%8A%D9%85%20%D8%A5%D8%B9%D9%84%D8%A7%D9%86%20%D8%A8%D8%B5%D8%B1%D9%8A%20%D9%84%D9%85%D9%86%D8%AA%D8%AC%20%D8%A3%D9%88%20%D8%AE%D8%AF%D9%85%D8%A9%20%D8%A3%D9%88%20%D8%B9%D8%B1%D8%B6.%20%D9%87%D8%B0%D9%87%20%D9%81%D9%83%D8%B1%D8%AA%D9%8A%20%D9%88%D8%A7%D9%84%D8%AA%D9%81%D8%A7%D8%B5%D9%8A%D9%84%20%D8%A7%D9%84%D8%AA%D9%8A%20%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%A5%D8%B8%D9%87%D8%A7%D8%B1%D9%87%D8%A7%3A" rel="noopener noreferrer" target="_blank">اطلب تصميمك</a>
+<button aria-label="تبديل الوضع اللوني" class="theme-toggle" id="themeToggle" type="button"><span aria-hidden="true" class="theme-icon">☾</span><span class="theme-label">الوضع الليلي</span></button>
+<button aria-controls="navLinks" aria-expanded="false" aria-label="فتح القائمة" class="menu-toggle" id="menuToggle" type="button">☰</button>
+</div>
+</div>
+</div>
+</header>
+<main id="top">
+<section aria-labelledby="hero-title" class="hero">
+<div class="container hero-layout">
+<div class="hero-content">
+<span class="hero-kicker">تصميم إعلانات بصرية للمنتجات والخدمات</span>
+<h1 id="hero-title">خلّي ما تقدّمه يظهر بأفضل صورة</h1>
+<p>أصمّم إعلانات بصرية ثابتة للمنتجات والخدمات والعروض والأنشطة المختلفة، بمحتوى يناسب هدفك والجمهور الذي تخاطبه، أينما كان نشاطك.</p>
+<div class="hero-actions">
+<a class="btn btn-primary" href="https://wa.me/972595936527?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%20%D8%B9%D9%84%D9%8A%D9%83%D9%85%D8%8C%20%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%A7%D9%84%D8%A7%D8%B3%D8%AA%D9%81%D8%B3%D8%A7%D8%B1%20%D8%B9%D9%86%20%D8%AA%D8%B5%D9%85%D9%8A%D9%85%20%D8%A5%D8%B9%D9%84%D8%A7%D9%86%20%D8%A8%D8%B5%D8%B1%D9%8A%20%D9%84%D9%85%D9%86%D8%AA%D8%AC%20%D8%A3%D9%88%20%D8%AE%D8%AF%D9%85%D8%A9%20%D8%A3%D9%88%20%D8%B9%D8%B1%D8%B6.%20%D9%87%D8%B0%D9%87%20%D9%81%D9%83%D8%B1%D8%AA%D9%8A%20%D9%88%D8%A7%D9%84%D8%AA%D9%81%D8%A7%D8%B5%D9%8A%D9%84%20%D8%A7%D9%84%D8%AA%D9%8A%20%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%A5%D8%B8%D9%87%D8%A7%D8%B1%D9%87%D8%A7%3A" rel="noopener noreferrer" target="_blank">راسلني لطلب تصميم <span aria-hidden="true">←</span></a>
+<a class="btn btn-outline" href="#portfolio">شاهد النماذج التجريبية</a>
+</div>
+<p class="hero-note">تصميم واضح وجاهز للنشر، بالمقاس المناسب لمنصتك، مع الاتفاق على التفاصيل والتكلفة قبل التنفيذ.</p>
+</div>
+<div aria-label="نموذج إعلاني واضح لمنتج أزياء" class="hero-visual"><img alt="نموذج إعلان للأزياء يعرض المنتج والرسالة التسويقية بحجم واضح" decoding="async" fetchpriority="high" loading="eager" src="0%20(2).webp" width="1216" height="1280"/></div></div>
 </section>
-
-<!-- سكربت التحقق الذكي -->
+<section class="section" id="service">
+<div class="container">
+<div class="section-heading">
+<span class="eyebrow">الخدمة</span>
+<h2>إعلان بصري يبرز ما تقدّمه</h2>
+<p>أحوّل فكرتك إلى تصميم إعلاني واضح يقدّم منتجك أو خدمتك أو عرضك، مع ترتيب العناصر والمعلومات بما يخدم هدف الإعلان.</p>
+</div>
+<div class="service-grid">
+<article class="service-card">
+<div class="service-icon"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="M4 8h16v11H4zM7 8l2-3h6l2 3M8 13h.01M12 13h.01M16 13h.01"></path></svg></div>
+<h3>إعلان منتج أو خدمة</h3>
+<p>تصميم يوضح ما تقدّمه ويبرز أهم ميزاته ومعلوماته بطريقة سهلة وجذابة.</p>
+</article>
+<article class="service-card">
+<div class="service-icon"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="M4 6h16v13H4zM8 10h8M8 14h5M16 3v6M8 3v3"></path></svg></div>
+<h3>إعلان عرض أو مناسبة</h3>
+<p>تنسيق تفاصيل العروض والافتتاحات والمناسبات والإعلانات الخاصة بوضوح.</p>
+</article>
+<article class="service-card">
+<div class="service-icon"><svg aria-hidden="true" viewbox="0 0 24 24"><rect height="7" rx="1" width="7" x="4" y="4"></rect><rect height="7" rx="1" width="7" x="13" y="4"></rect><rect height="7" rx="1" width="7" x="4" y="13"></rect><rect height="7" rx="1" width="7" x="13" y="13"></rect></svg></div>
+<h3>تصاميم متناسقة لنشاطك</h3>
+<p>إعداد أكثر من تصميم بأسلوب بصري موحّد يحافظ على تناسق منشوراتك، بحسب الاتفاق.</p>
+</article>
+</div>
+<p class="trust-note">أستخدم الصور والمواد التي ترسلها، وألتزم بالمعلومات التي تعتمدها دون إضافة أسعار أو تفاصيل غير مؤكدة.</p>
+</div>
+</section>
+<section class="section section-soft" id="portfolio"><div class="container"><div class="section-heading"><span class="eyebrow">المعرض</span><h2>نماذج إعلانية متنوعة</h2><p>نماذج تجريبية لمنتجات وخدمات وأنشطة مختلفة. تنوّع الأمثلة يوضح مرونة التصميم، ولا يحصر الخدمة في مجال محدد.</p></div><div class="portfolio-intro"><strong>تنويه: </strong>المعرض يضم نماذج توضيحية وأمثلة تصميم من مجالات مختلفة. بعض الصور تتضمن هوية أو بيانات نشاط كما وردت في الملفات الأصلية؛ ووجودها هنا لا يمثل شهادة من النشاط الظاهر أو ادعاءً بنتائج تجارية.</div><section aria-labelledby="portfolio-gallery-title" class="gallery-block"><div class="gallery-heading"><div><span class="eyebrow">مجموعة واحدة تشمل النماذج</span><h3 id="portfolio-gallery-title">استعرض نماذج التصميم</h3><p>24 نموذجًا من مجالات وأساليب متنوعة.</p></div></div><div class="gallery-viewport"><div aria-label="جميع نماذج التصميم الإعلاني" class="gallery-track" role="region" tabindex="0"><article aria-label="1 من 24" aria-roledescription="شريحة" class="gallery-slide" role="group">
+<img alt="مجموعة نماذج توضيحية لحملة عيادة أسنان" decoding="async" height="1024" loading="lazy" sizes="(max-width: 768px) 100vw, (max-width: 1100px) 92vw, 980px" src="img/img-006.jpg" width="1536"/>
+<p class="slide-caption">عيادة أسنان</p>
+</article><article aria-label="2 من 24" aria-roledescription="شريحة" class="gallery-slide" role="group">
+<img alt="نموذج إعلاني تجريبي لمركز تعليمي" decoding="async" height="1254" loading="lazy" sizes="(max-width: 768px) 100vw, (max-width: 1100px) 92vw, 980px" src="img/img-007.jpg" width="1254"/>
+<p class="slide-caption">مركز تعليمي</p>
+</article><article aria-label="3 من 24" aria-roledescription="شريحة" class="gallery-slide" role="group">
+<img alt="نموذج بصري ترويجي تجريبي" decoding="async" height="1024" loading="lazy" sizes="(max-width: 768px) 100vw, (max-width: 1100px) 92vw, 980px" src="img/img-008.jpg" width="1024"/>
+<p class="slide-caption">محتوى ترويجي</p>
+</article><article aria-label="4 من 24" aria-roledescription="شريحة" class="gallery-slide" role="group">
+<img alt="نموذج إعلاني تجريبي لمتجر ومنتجات" decoding="async" height="1376" loading="lazy" sizes="(max-width: 768px) 100vw, (max-width: 1100px) 92vw, 980px" src="img/img-003.jpg" width="768"/>
+<p class="slide-caption">منتجات ومتجر</p>
+</article><article aria-label="5 من 24" aria-roledescription="شريحة" class="gallery-slide" role="group">
+<img alt="نموذج إعلاني تجريبي للملابس والأزياء" decoding="async" height="1397" loading="lazy" sizes="(max-width: 768px) 100vw, (max-width: 1100px) 92vw, 980px" src="img/img-004.jpg" width="1126"/>
+<p class="slide-caption">ملابس وأزياء</p>
+</article><article aria-label="6 من 24" aria-roledescription="شريحة" class="gallery-slide" role="group"><img alt="تصميم إعلاني للأزياء والملابس بعبارة ترويجية وهوية متجر" decoding="async" height="1280" loading="lazy" sizes="(max-width: 768px) 100vw, (max-width: 1100px) 92vw, 980px" src="0%20(2).webp" width="1216"/><p class="slide-caption">إعلان أزياء وملابس</p></article><article aria-label="7 من 24" aria-roledescription="شريحة" class="gallery-slide" role="group">
+<img alt="نموذج بصري تجريبي ضمن مجموعة عيد الأضحى 2026" decoding="async" height="1632" loading="lazy" sizes="(max-width: 768px) 100vw, (max-width: 1100px) 92vw, 980px" src="al-Adha/001.jpg" width="1216"/>
+<p class="slide-caption">نموذج موسمي 01</p>
+</article><article aria-label="8 من 24" aria-roledescription="شريحة" class="gallery-slide" role="group">
+<img alt="نموذج بصري تجريبي ضمن مجموعة عيد الأضحى 2026" decoding="async" height="572" loading="lazy" sizes="(max-width: 768px) 100vw, (max-width: 1100px) 92vw, 980px" src="al-Adha/002.jpg" width="1024"/>
+<p class="slide-caption">نموذج موسمي 02</p>
+</article><article aria-label="9 من 24" aria-roledescription="شريحة" class="gallery-slide" role="group">
+<img alt="نموذج بصري تجريبي ضمن مجموعة عيد الأضحى 2026" decoding="async" height="572" loading="lazy" sizes="(max-width: 768px) 100vw, (max-width: 1100px) 92vw, 980px" src="al-Adha/003.jpg" width="1024"/>
+<p class="slide-caption">نموذج موسمي 03</p>
+</article><article aria-label="10 من 24" aria-roledescription="شريحة" class="gallery-slide" role="group">
+<img alt="نموذج بصري تجريبي ضمن مجموعة عيد الأضحى 2026" decoding="async" height="768" loading="lazy" sizes="(max-width: 768px) 100vw, (max-width: 1100px) 92vw, 980px" src="al-Adha/004.jpg" width="1024"/>
+<p class="slide-caption">نموذج موسمي 04</p>
+</article><article aria-label="11 من 24" aria-roledescription="شريحة" class="gallery-slide" role="group">
+<img alt="نموذج بصري تجريبي ضمن مجموعة عيد الأضحى 2026" decoding="async" height="3072" loading="lazy" sizes="(max-width: 768px) 100vw, (max-width: 1100px) 92vw, 980px" src="al-Adha/005.jpg" width="5440"/>
+<p class="slide-caption">نموذج موسمي 05</p>
+</article><article aria-label="12 من 24" aria-roledescription="شريحة" class="gallery-slide" role="group">
+<img alt="نموذج بصري تجريبي ضمن مجموعة عيد الأضحى 2026" decoding="async" height="859" loading="lazy" sizes="(max-width: 768px) 100vw, (max-width: 1100px) 92vw, 980px" src="al-Adha/006.jpg" width="1024"/>
+<p class="slide-caption">نموذج موسمي 06</p>
+</article><article aria-label="13 من 24" aria-roledescription="شريحة" class="gallery-slide" role="group">
+<img alt="نموذج بصري تجريبي ضمن مجموعة عيد الأضحى 2026" decoding="async" height="1024" loading="lazy" sizes="(max-width: 768px) 100vw, (max-width: 1100px) 92vw, 980px" src="al-Adha/007.jpg" width="825"/>
+<p class="slide-caption">نموذج موسمي 07</p>
+</article><article aria-label="14 من 24" aria-roledescription="شريحة" class="gallery-slide" role="group">
+<img alt="نموذج بصري تجريبي ضمن مجموعة عيد الأضحى 2026" decoding="async" height="3072" loading="lazy" sizes="(max-width: 768px) 100vw, (max-width: 1100px) 92vw, 980px" src="al-Adha/008.jpg" width="5440"/>
+<p class="slide-caption">نموذج موسمي 08</p>
+</article><article aria-label="15 من 24" aria-roledescription="شريحة" class="gallery-slide" role="group">
+<img alt="نموذج بصري تجريبي ضمن مجموعة عيد الأضحى 2026" decoding="async" height="572" loading="lazy" sizes="(max-width: 768px) 100vw, (max-width: 1100px) 92vw, 980px" src="al-Adha/009.jpg" width="1024"/>
+<p class="slide-caption">نموذج موسمي 09</p>
+</article><article aria-label="16 من 24" aria-roledescription="شريحة" class="gallery-slide" role="group"><img alt="تصميم ترويجي لمنتج أزياء وفستان" decoding="async" height="1920" loading="lazy" sizes="(max-width: 768px) 100vw, (max-width: 1100px) 92vw, 980px" src="0%20(3).webp" width="768"/><p class="slide-caption">إعلان منتج أزياء</p></article><article aria-label="17 من 24" aria-roledescription="شريحة" class="gallery-slide" role="group">
+<img alt="نموذج بصري تجريبي ضمن مجموعة عيد الأضحى 2026" decoding="async" height="768" loading="lazy" sizes="(max-width: 768px) 100vw, (max-width: 1100px) 92vw, 980px" src="al-Adha/010.jpg" width="1408"/>
+<p class="slide-caption">نموذج موسمي 10</p>
+</article><article aria-label="18 من 24" aria-roledescription="شريحة" class="gallery-slide" role="group">
+<img alt="نموذج بصري تجريبي ضمن مجموعة عيد الأضحى 2026" decoding="async" height="1024" loading="lazy" sizes="(max-width: 768px) 100vw, (max-width: 1100px) 92vw, 980px" src="al-Adha/011.jpg" width="825"/>
+<p class="slide-caption">نموذج موسمي 11</p>
+</article><article aria-label="19 من 24" aria-roledescription="شريحة" class="gallery-slide" role="group">
+<img alt="نموذج إعلاني تجريبي للحلويات والضيافة" decoding="async" height="1024" loading="lazy" sizes="(max-width: 768px) 100vw, (max-width: 1100px) 92vw, 980px" src="img/img-001.jpg" width="1024"/>
+<p class="slide-caption">حلويات وضيافة</p>
+</article><article aria-label="20 من 24" aria-roledescription="شريحة" class="gallery-slide" role="group">
+<img alt="نموذج إعلاني تجريبي لمنتج مخبوزات" decoding="async" height="1152" loading="lazy" sizes="(max-width: 768px) 100vw, (max-width: 1100px) 92vw, 980px" src="img/img-002.jpg" width="928"/>
+<p class="slide-caption">مخبوزات ومنتجات</p>
+</article><article aria-label="21 من 24" aria-roledescription="شريحة" class="gallery-slide" role="group">
+<img alt="نموذج إعلاني تجريبي لمنتج غذائي" decoding="async" height="1254" loading="lazy" sizes="(max-width: 768px) 100vw, (max-width: 1100px) 92vw, 980px" src="img/img-005.jpg" width="1254"/>
+<p class="slide-caption">إعلان منتج</p>
+</article><article aria-label="22 من 24" aria-roledescription="شريحة" class="gallery-slide" role="group">
+<img alt="مجموعة نماذج إعلانية تجريبية لمنتجات غذائية" decoding="async" height="1024" loading="lazy" sizes="(max-width: 768px) 100vw, (max-width: 1100px) 92vw, 980px" src="img/img-009.jpg" width="1024"/>
+<p class="slide-caption">مجموعة منتجات</p>
+</article><article aria-label="23 من 24" aria-roledescription="شريحة" class="gallery-slide" role="group">
+<img alt="نموذج إعلاني تجريبي لمنتج" decoding="async" height="768" loading="lazy" sizes="(max-width: 768px) 100vw, (max-width: 1100px) 92vw, 980px" src="img/img-010.jpg" width="1408"/>
+<p class="slide-caption">إعلان لمنتج</p>
+</article><article aria-label="24 من 24" aria-roledescription="شريحة" class="gallery-slide" role="group">
+<img alt="نموذج إعلاني تجريبي للحلويات والقهوة" decoding="async" height="1402" loading="lazy" sizes="(max-width: 768px) 100vw, (max-width: 1100px) 92vw, 980px" src="img/img-011.jpg" width="1122"/>
+<p class="slide-caption">منتجات وضيافة</p>
+</article></div><div aria-label="أدوات تصفح المعرض" class="gallery-controls" dir="ltr"><button aria-label="انتقل إلى الصورة السابقة (يسار)" class="gallery-arrow gallery-prev" disabled="" type="button"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="M15 5l-7 7 7 7"></path></svg></button><button aria-label="انتقل إلى الصورة التالية (يمين)" class="gallery-arrow gallery-next" type="button"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="M9 5l7 7-7 7"></path></svg></button></div></div><p class="gallery-hint">اسحب يمينًا أو يسارًا لاستعراض جميع النماذج</p></section></div></section>
+<section class="section" id="process">
+<div class="container">
+<div class="section-heading">
+<span class="eyebrow">طريقة العمل</span>
+<h2>من فكرتك إلى تصميم جاهز للنشر</h2>
+<p>نراجع الهدف والمحتوى والتفاصيل، ونتفق على نطاق التنفيذ قبل البدء.</p>
+</div>
+<div class="process-grid">
+<article class="process-step"><h3>شارك فكرة الإعلان</h3><p>حدّد ما تريد الإعلان عنه والهدف الذي تريد الوصول إليه.</p></article>
+<article class="process-step"><h3>أرسل المحتوى والتفاصيل</h3><p>الصور أو المواد المتاحة، والنصوص والمعلومات التي تريد إظهارها.</p></article>
+<article class="process-step"><h3>نتفق على نطاق التنفيذ</h3><p>نحدد المقاس والتصور وعدد التصاميم والتعديلات وموعد التسليم والتكلفة.</p></article>
+<article class="process-step"><h3>استلم التصميم النهائي</h3><p>تستلم الملف بصيغة PNG أو JPG وبالمقاس المتفق عليه، جاهزًا للنشر.</p></article>
+</div>
+<div class="request-info"><strong>قبل بدء أي طلب:</strong> تُحدد تفاصيل التصميم وعدد النسخ والمقاسات والتعديلات وموعد التسليم والتكلفة باتفاق واضح. لا توجد أسعار منشورة أو باقات ثابتة حاليًا.</div>
+</div>
+</section>
+<section class="section section-soft" id="contact">
+<div class="container contact-wrap">
+<div class="contact-copy">
+<span class="eyebrow">ابدأ بطلبك</span>
+<h2>عندك منتج أو خدمة أو فكرة تريد الإعلان عنها؟</h2>
+<p>أرسل نبذة عن نشاطك وما تريد الإعلان عنه. نراجع الفكرة والمواد والمقاس والتعديلات وموعد التسليم والتكلفة قبل البدء.</p>
+<div class="contact-options">
+<a class="btn btn-primary" href="https://wa.me/972595936527?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%20%D8%B9%D9%84%D9%8A%D9%83%D9%85%D8%8C%20%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%A7%D9%84%D8%A7%D8%B3%D8%AA%D9%81%D8%B3%D8%A7%D8%B1%20%D8%B9%D9%86%20%D8%AA%D8%B5%D9%85%D9%8A%D9%85%20%D8%A5%D8%B9%D9%84%D8%A7%D9%86%20%D8%A8%D8%B5%D8%B1%D9%8A%20%D9%84%D9%85%D9%86%D8%AA%D8%AC%20%D8%A3%D9%88%20%D8%AE%D8%AF%D9%85%D8%A9%20%D8%A3%D9%88%20%D8%B9%D8%B1%D8%B6.%20%D9%87%D8%B0%D9%87%20%D9%81%D9%83%D8%B1%D8%AA%D9%8A%20%D9%88%D8%A7%D9%84%D8%AA%D9%81%D8%A7%D8%B5%D9%8A%D9%84%20%D8%A7%D9%84%D8%AA%D9%8A%20%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%A5%D8%B8%D9%87%D8%A7%D8%B1%D9%87%D8%A7%3A" rel="noopener noreferrer" target="_blank">تواصل عبر واتساب</a>
+<a class="btn btn-outline" href="https://t.me/Bahaeldeen94" rel="noopener noreferrer" style="color:var(--text);border-color:var(--border);background:var(--bg)" target="_blank">تيليجرام</a>
+</div>
+</div>
+<div class="contact-card">
+<h3>أو أرسل رسالة من النموذج</h3>
+<p>اكتب بيانات التواصل ووصفًا مختصرًا لما تريد تصميمه.</p>
+<form action="https://formspree.io/f/mredvolg" class="contact-form" id="contactForm" method="POST">
+<div class="form-group"><label for="userName">الاسم</label><input autocomplete="name" id="userName" name="name" pattern=".*\S.*" placeholder="اسمك" required="" type="text"/></div>
+<div class="form-group"><label for="userEmail">البريد الإلكتروني</label><input autocomplete="email" id="userEmail" name="email" placeholder="email@example.com" required="" type="email"/></div>
+<div class="form-group"><label for="userMessage">تفاصيل الطلب</label><textarea id="userMessage" name="message" placeholder="اكتب ما الذي تريد الإعلان عنه، والفكرة أو التفاصيل التي تود ظهورها." required=""></textarea></div>
+<button class="submit-btn" type="submit">إرسال الرسالة</button>
+</form>
+<p class="contact-small">لم يتم تغيير خدمة استقبال الرسائل الحالية. يجب اختبار وصول الرسالة بصورة منفصلة قبل الاعتماد النهائي.</p>
+</div>
+</div>
+</section>
+</main>
+<footer>
+<div class="container footer-inner">
+<span>© 2026 بهاء رضوان. جميع الحقوق محفوظة.</span>
+<div class="footer-links"><a href="#service">الخدمة</a><a href="#portfolio">النماذج</a><a href="https://wa.me/972595936527?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%20%D8%B9%D9%84%D9%8A%D9%83%D9%85%D8%8C%20%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%A7%D9%84%D8%A7%D8%B3%D8%AA%D9%81%D8%B3%D8%A7%D8%B1%20%D8%B9%D9%86%20%D8%AA%D8%B5%D9%85%D9%8A%D9%85%20%D8%A5%D8%B9%D9%84%D8%A7%D9%86%20%D8%A8%D8%B5%D8%B1%D9%8A%20%D9%84%D9%85%D9%86%D8%AA%D8%AC%20%D8%A3%D9%88%20%D8%AE%D8%AF%D9%85%D8%A9%20%D8%A3%D9%88%20%D8%B9%D8%B1%D8%B6.%20%D9%87%D8%B0%D9%87%20%D9%81%D9%83%D8%B1%D8%AA%D9%8A%20%D9%88%D8%A7%D9%84%D8%AA%D9%81%D8%A7%D8%B5%D9%8A%D9%84%20%D8%A7%D9%84%D8%AA%D9%8A%20%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%A5%D8%B8%D9%87%D8%A7%D8%B1%D9%87%D8%A7%3A" rel="noopener noreferrer" target="_blank">واتساب</a><a href="https://t.me/Bahaeldeen94" rel="noopener noreferrer" target="_blank">تيليجرام</a></div>
+</div>
+</footer>
 <script>
-document.getElementById('contactForm').addEventListener('submit', function(event) {
-    const name = document.getElementById('userName').value.trim();
-    const email = document.getElementById('userEmail').value.trim();
-    const message = document.getElementById('userMessage').value.trim();
-    
-    // التحقق من أن الحقول ليست فارغة بعد حذف المسافات الزائدة
-    if (name === "" || email === "" || message === "") {
-        event.preventDefault(); // إيقاف إرسال النموذج فوراً
-        alert("يرجى ملء جميع الحقول بشكل صحيح قبل الإرسال.");
-        return false;
+  (() => {
+    const body = document.body;
+    const menuToggle = document.getElementById('menuToggle');
+    const navLinks = document.getElementById('navLinks');
+    if (menuToggle && navLinks) {
+      menuToggle.addEventListener('click', () => {
+        const open = menuToggle.getAttribute('aria-expanded') === 'true';
+        menuToggle.setAttribute('aria-expanded', String(!open));
+        menuToggle.setAttribute('aria-label', open ? 'فتح القائمة' : 'إغلاق القائمة');
+        navLinks.classList.toggle('active', !open);
+      });
+      navLinks.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
+        navLinks.classList.remove('active');
+        menuToggle.setAttribute('aria-expanded', 'false');
+        menuToggle.setAttribute('aria-label', 'فتح القائمة');
+      }));
     }
 
-    // تحقق إضافي من صيغة البريد الإلكتروني
-    const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
-    if (!emailPattern.test(email)) {
+    const themeToggle = document.getElementById('themeToggle');
+    const themeIcon = themeToggle?.querySelector('.theme-icon');
+    const themeLabel = themeToggle?.querySelector('.theme-label');
+    let savedTheme = null;
+    try { savedTheme = localStorage.getItem('theme'); } catch (_) {}
+    if (savedTheme === 'dark') body.setAttribute('data-theme', 'dark');
+    const updateTheme = () => {
+      const dark = body.getAttribute('data-theme') === 'dark';
+      if (themeIcon) themeIcon.textContent = dark ? '☀' : '☾';
+      if (themeLabel) themeLabel.textContent = dark ? 'الوضع النهاري' : 'الوضع الليلي';
+    };
+    updateTheme();
+    themeToggle?.addEventListener('click', () => {
+      const next = body.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+      body.setAttribute('data-theme', next);
+      try { localStorage.setItem('theme', next); } catch (_) {}
+      updateTheme();
+    });
+
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    document.querySelectorAll('.gallery-block').forEach(gallery => {
+      const track = gallery.querySelector('.gallery-track');
+      const next = gallery.querySelector('.gallery-next');
+      const prev = gallery.querySelector('.gallery-prev');
+      if (!track || !next || !prev) return;
+      const update = () => {
+        const max = track.scrollWidth - track.clientWidth;
+        prev.disabled = track.scrollLeft <= 2;
+        next.disabled = track.scrollLeft >= max - 2;
+      };
+      next.addEventListener('click', () => track.scrollBy({left: track.clientWidth, behavior: reducedMotion ? 'auto' : 'smooth'}));
+      prev.addEventListener('click', () => track.scrollBy({left: -track.clientWidth, behavior: reducedMotion ? 'auto' : 'smooth'}));
+      track.addEventListener('scroll', update, {passive:true});
+      window.addEventListener('resize', update);
+      update();
+    });
+
+    const contactForm = document.getElementById('contactForm');
+    contactForm?.addEventListener('submit', event => {
+      const requiredIds = ['userName', 'userEmail', 'userMessage'];
+      if (requiredIds.some(id => !document.getElementById(id)?.value.trim())) {
         event.preventDefault();
-        alert("يرجى إدخال بريد إلكتروني صالح.");
-        return false;
-    }
-});
-</script>
-    <footer>
-        <div class="footer-content">
-            <div class="footer-links">
-                <h3>روابط سريعة</h3>
-                <a href="#portfolio">الأعمال</a>
-                <a href="#contact">تواصل معي</a>
-            </div>
-            <div>
-                <h3>تابعني</h3>
-                <div class="footer-social">
-                    <a href="#" title="Behance"><i class="fab fa-behance"></i></a>
-                    <a href="https://instagram.com/Bahaeldeen94" title="Instagram"><i class="fab fa-instagram"></i></a>
-                    <a href="#" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
-                </div>
-            </div>
-        </div>
-        <p style="text-align: center; margin-top: 20px;">© 2026 بهاء رضوان. جميع الحقوق محفوظة.</p>
-    </footer>
-
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script>
-        // إعداد الحركات (AOS)
-        AOS.init({ duration: 1000, once: true, offset: 100 });
-        
-        // إعداد الكاروسيل (Swiper) للحركة الدائمة والبطيئة (Ticker/Continuous Marquee)
-        new Swiper(".mySwiper", {
-            pagination: { el: ".swiper-pagination", clickable: true, dynamicBullets: true },
-            navigation: { nextEl: ".swiper-button-next", prevEl: ".swiper-button-prev" },
-            loop: true, 
-            speed: 15000, // سرعة التمرير (حركة بطيئة)
-            autoplay: {
-                delay: 0, // لا يوجد توقف بين الصور
-                disableOnInteraction: false, // استمرار الحركة حتى بعد اللمس
-            },
-            slidesPerView: 1, // عرض صورة واحدة
-        });
-
-        // قائمة الجوال
-        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-        const navLinks = document.getElementById('navLinks');
-        mobileMenuBtn.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-        });
-
-        // إعداد الوضع الليلي والنهاري (مع الحفظ في localStorage)
-        const themeToggle = document.getElementById('themeToggle');
-        const body = document.body;
-        const icon = themeToggle.querySelector('i');
-        const text = themeToggle.querySelector('span');
-
-        // جلب الإعداد المحفوظ عند تحميل الصفحة
-        const savedTheme = localStorage.getItem('theme');
-        if(savedTheme) {
-            body.setAttribute('data-theme', savedTheme);
-            if(savedTheme === 'dark') {
-                icon.classList.replace('fa-moon', 'fa-sun');
-                text.innerText = "الوضع النهاري";
-            }
-        }
-
-        themeToggle.addEventListener('click', () => {
-            const isLight = body.getAttribute('data-theme') === 'light';
-            const newTheme = isLight ? 'dark' : 'light';
-            
-            body.setAttribute('data-theme', newTheme);
-            localStorage.setItem('theme', newTheme); // الحفظ في التخزين المحلي
-            
-            if (newTheme === 'dark') {
-                icon.classList.replace('fa-moon', 'fa-sun');
-                text.innerText = "الوضع النهاري";
-            } else {
-                icon.classList.replace('fa-sun', 'fa-moon');
-                text.innerText = "الوضع الليلي";
-            }
-        });
-
-        // شريط السحب قبل وبعد
-        const baSlider = document.getElementById('ba-slider');
-        const baAfterImg = document.getElementById('ba-after-img');
-        const baLine = document.getElementById('ba-line');
-        baSlider.addEventListener('input', (e) => {
-            const val = e.target.value;
-            baAfterImg.style.clipPath = `polygon(0 0, ${val}% 0, ${val}% 100%, 0 100%)`;
-            baLine.style.left = `${val}%`;
-        });
-    </script>
+        alert('يرجى تعبئة جميع الحقول.');
+      }
+    });
+  })();
+  </script>
 </body>
 </html>
