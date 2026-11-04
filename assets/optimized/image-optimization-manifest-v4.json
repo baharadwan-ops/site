@@ -1,0 +1,539 @@
+{
+  "images": [
+    {
+      "source": "1 (4).webp",
+      "variants": [
+        {
+          "path": "assets/optimized/hero/hero-main-720.webp",
+          "width": 720,
+          "height": 405,
+          "bytes": 37320
+        },
+        {
+          "path": "assets/optimized/hero/hero-main-1039.webp",
+          "width": 1039,
+          "height": 585,
+          "bytes": 57880
+        }
+      ],
+      "hero": true,
+      "original_width": 1672,
+      "original_height": 941
+    },
+    {
+      "source": "img/img-006.jpg",
+      "variants": [
+        {
+          "path": "assets/optimized/img/img-006-640.webp",
+          "width": 640,
+          "height": 427,
+          "bytes": 42116
+        },
+        {
+          "path": "assets/optimized/img/img-006-1024.webp",
+          "width": 1024,
+          "height": 683,
+          "bytes": 80426
+        }
+      ],
+      "hero": false,
+      "original_width": 1536,
+      "original_height": 1024
+    },
+    {
+      "source": "img/img-007.jpg",
+      "variants": [
+        {
+          "path": "assets/optimized/img/img-007-640.webp",
+          "width": 640,
+          "height": 640,
+          "bytes": 56268
+        },
+        {
+          "path": "assets/optimized/img/img-007-1024.webp",
+          "width": 1024,
+          "height": 1024,
+          "bytes": 103160
+        }
+      ],
+      "hero": false,
+      "original_width": 1254,
+      "original_height": 1254
+    },
+    {
+      "source": "img/img-008.jpg",
+      "variants": [
+        {
+          "path": "assets/optimized/img/img-008-640.webp",
+          "width": 640,
+          "height": 640,
+          "bytes": 65270
+        },
+        {
+          "path": "assets/optimized/img/img-008-1024.webp",
+          "width": 1024,
+          "height": 1024,
+          "bytes": 121058
+        }
+      ],
+      "hero": false,
+      "original_width": 1024,
+      "original_height": 1024
+    },
+    {
+      "source": "img/img-003.jpg",
+      "variants": [
+        {
+          "path": "assets/optimized/img/img-003-640.webp",
+          "width": 640,
+          "height": 1147,
+          "bytes": 120844
+        },
+        {
+          "path": "assets/optimized/img/img-003-768.webp",
+          "width": 768,
+          "height": 1376,
+          "bytes": 165434
+        }
+      ],
+      "hero": false,
+      "original_width": 768,
+      "original_height": 1376
+    },
+    {
+      "source": "img/img-004.jpg",
+      "variants": [
+        {
+          "path": "assets/optimized/img/img-004-640.webp",
+          "width": 640,
+          "height": 794,
+          "bytes": 49640
+        },
+        {
+          "path": "assets/optimized/img/img-004-1024.webp",
+          "width": 1024,
+          "height": 1270,
+          "bytes": 91654
+        }
+      ],
+      "hero": false,
+      "original_width": 1126,
+      "original_height": 1397
+    },
+    {
+      "source": "0 (2).webp",
+      "variants": [
+        {
+          "path": "assets/optimized/uploads/0-2-640.webp",
+          "width": 640,
+          "height": 640,
+          "bytes": 55838
+        },
+        {
+          "path": "assets/optimized/uploads/0-2-1024.webp",
+          "width": 1024,
+          "height": 1024,
+          "bytes": 117132
+        }
+      ],
+      "hero": false,
+      "original_width": 1254,
+      "original_height": 1254
+    },
+    {
+      "source": "al-Adha/001.jpg",
+      "variants": [
+        {
+          "path": "assets/optimized/al-Adha/001-640.webp",
+          "width": 640,
+          "height": 859,
+          "bytes": 61368
+        },
+        {
+          "path": "assets/optimized/al-Adha/001-1024.webp",
+          "width": 1024,
+          "height": 1374,
+          "bytes": 120414
+        }
+      ],
+      "hero": false,
+      "original_width": 1216,
+      "original_height": 1632
+    },
+    {
+      "source": "al-Adha/002.jpg",
+      "variants": [
+        {
+          "path": "assets/optimized/al-Adha/002-640.webp",
+          "width": 640,
+          "height": 358,
+          "bytes": 31568
+        },
+        {
+          "path": "assets/optimized/al-Adha/002-1024.webp",
+          "width": 1024,
+          "height": 572,
+          "bytes": 58364
+        }
+      ],
+      "hero": false,
+      "original_width": 1024,
+      "original_height": 572
+    },
+    {
+      "source": "al-Adha/003.jpg",
+      "variants": [
+        {
+          "path": "assets/optimized/al-Adha/003-640.webp",
+          "width": 640,
+          "height": 358,
+          "bytes": 21300
+        },
+        {
+          "path": "assets/optimized/al-Adha/003-1024.webp",
+          "width": 1024,
+          "height": 572,
+          "bytes": 41934
+        }
+      ],
+      "hero": false,
+      "original_width": 1024,
+      "original_height": 572
+    },
+    {
+      "source": "al-Adha/004.jpg",
+      "variants": [
+        {
+          "path": "assets/optimized/al-Adha/004-640.webp",
+          "width": 640,
+          "height": 480,
+          "bytes": 81242
+        },
+        {
+          "path": "assets/optimized/al-Adha/004-1024.webp",
+          "width": 1024,
+          "height": 768,
+          "bytes": 167134
+        }
+      ],
+      "hero": false,
+      "original_width": 1024,
+      "original_height": 768
+    },
+    {
+      "source": "al-Adha/005.jpg",
+      "variants": [
+        {
+          "path": "assets/optimized/al-Adha/005-639.webp",
+          "width": 639,
+          "height": 361,
+          "bytes": 63946
+        },
+        {
+          "path": "assets/optimized/al-Adha/005-1024.webp",
+          "width": 1024,
+          "height": 578,
+          "bytes": 126070
+        }
+      ],
+      "hero": false,
+      "original_width": 5440,
+      "original_height": 3072
+    },
+    {
+      "source": "al-Adha/006.jpg",
+      "variants": [
+        {
+          "path": "assets/optimized/al-Adha/006-640.webp",
+          "width": 640,
+          "height": 537,
+          "bytes": 75936
+        },
+        {
+          "path": "assets/optimized/al-Adha/006-1024.webp",
+          "width": 1024,
+          "height": 859,
+          "bytes": 156656
+        }
+      ],
+      "hero": false,
+      "original_width": 1024,
+      "original_height": 859
+    },
+    {
+      "source": "al-Adha/007.jpg",
+      "variants": [
+        {
+          "path": "assets/optimized/al-Adha/007-640.webp",
+          "width": 640,
+          "height": 794,
+          "bytes": 31480
+        },
+        {
+          "path": "assets/optimized/al-Adha/007-825.webp",
+          "width": 825,
+          "height": 1024,
+          "bytes": 48038
+        }
+      ],
+      "hero": false,
+      "original_width": 825,
+      "original_height": 1024
+    },
+    {
+      "source": "al-Adha/008.jpg",
+      "variants": [
+        {
+          "path": "assets/optimized/al-Adha/008-639.webp",
+          "width": 639,
+          "height": 361,
+          "bytes": 38846
+        },
+        {
+          "path": "assets/optimized/al-Adha/008-1024.webp",
+          "width": 1024,
+          "height": 578,
+          "bytes": 70694
+        }
+      ],
+      "hero": false,
+      "original_width": 5440,
+      "original_height": 3072
+    },
+    {
+      "source": "al-Adha/009.jpg",
+      "variants": [
+        {
+          "path": "assets/optimized/al-Adha/009-640.webp",
+          "width": 640,
+          "height": 358,
+          "bytes": 37126
+        },
+        {
+          "path": "assets/optimized/al-Adha/009-1024.webp",
+          "width": 1024,
+          "height": 572,
+          "bytes": 74646
+        }
+      ],
+      "hero": false,
+      "original_width": 1024,
+      "original_height": 572
+    },
+    {
+      "source": "0 (3).webp",
+      "variants": [
+        {
+          "path": "assets/optimized/uploads/0-3-640.webp",
+          "width": 640,
+          "height": 1138,
+          "bytes": 92584
+        },
+        {
+          "path": "assets/optimized/uploads/0-3-768.webp",
+          "width": 768,
+          "height": 1365,
+          "bytes": 118506
+        }
+      ],
+      "hero": false,
+      "original_width": 768,
+      "original_height": 1365
+    },
+    {
+      "source": "al-Adha/010.jpg",
+      "variants": [
+        {
+          "path": "assets/optimized/al-Adha/010-640.webp",
+          "width": 640,
+          "height": 349,
+          "bytes": 37690
+        },
+        {
+          "path": "assets/optimized/al-Adha/010-1024.webp",
+          "width": 1024,
+          "height": 559,
+          "bytes": 72828
+        }
+      ],
+      "hero": false,
+      "original_width": 1408,
+      "original_height": 768
+    },
+    {
+      "source": "al-Adha/011.jpg",
+      "variants": [
+        {
+          "path": "assets/optimized/al-Adha/011-640.webp",
+          "width": 640,
+          "height": 794,
+          "bytes": 33360
+        },
+        {
+          "path": "assets/optimized/al-Adha/011-825.webp",
+          "width": 825,
+          "height": 1024,
+          "bytes": 47898
+        }
+      ],
+      "hero": false,
+      "original_width": 825,
+      "original_height": 1024
+    },
+    {
+      "source": "img/img-001.jpg",
+      "variants": [
+        {
+          "path": "assets/optimized/img/img-001-640.webp",
+          "width": 640,
+          "height": 640,
+          "bytes": 117406
+        },
+        {
+          "path": "assets/optimized/img/img-001-1024.webp",
+          "width": 1024,
+          "height": 1024,
+          "bytes": 250814
+        }
+      ],
+      "hero": false,
+      "original_width": 1024,
+      "original_height": 1024
+    },
+    {
+      "source": "img/img-002.jpg",
+      "variants": [
+        {
+          "path": "assets/optimized/img/img-002-640.webp",
+          "width": 640,
+          "height": 794,
+          "bytes": 63428
+        },
+        {
+          "path": "assets/optimized/img/img-002-928.webp",
+          "width": 928,
+          "height": 1152,
+          "bytes": 115858
+        }
+      ],
+      "hero": false,
+      "original_width": 928,
+      "original_height": 1152
+    },
+    {
+      "source": "img/img-005.jpg",
+      "variants": [
+        {
+          "path": "assets/optimized/img/img-005-640.webp",
+          "width": 640,
+          "height": 640,
+          "bytes": 106268
+        },
+        {
+          "path": "assets/optimized/img/img-005-1024.webp",
+          "width": 1024,
+          "height": 1024,
+          "bytes": 202770
+        }
+      ],
+      "hero": false,
+      "original_width": 1254,
+      "original_height": 1254
+    },
+    {
+      "source": "img/img-009.jpg",
+      "variants": [
+        {
+          "path": "assets/optimized/img/img-009-640.webp",
+          "width": 640,
+          "height": 640,
+          "bytes": 87490
+        },
+        {
+          "path": "assets/optimized/img/img-009-1024.webp",
+          "width": 1024,
+          "height": 1024,
+          "bytes": 172710
+        }
+      ],
+      "hero": false,
+      "original_width": 1024,
+      "original_height": 1024
+    },
+    {
+      "source": "img/img-010.jpg",
+      "variants": [
+        {
+          "path": "assets/optimized/img/img-010-640.webp",
+          "width": 640,
+          "height": 349,
+          "bytes": 50670
+        },
+        {
+          "path": "assets/optimized/img/img-010-1024.webp",
+          "width": 1024,
+          "height": 559,
+          "bytes": 97376
+        }
+      ],
+      "hero": false,
+      "original_width": 1408,
+      "original_height": 768
+    },
+    {
+      "source": "img/img-011.jpg",
+      "variants": [
+        {
+          "path": "assets/optimized/img/img-011-640.webp",
+          "width": 640,
+          "height": 800,
+          "bytes": 59136
+        },
+        {
+          "path": "assets/optimized/img/img-011-1024.webp",
+          "width": 1024,
+          "height": 1280,
+          "bytes": 104676
+        }
+      ],
+      "hero": false,
+      "original_width": 1122,
+      "original_height": 1402
+    }
+  ],
+  "fonts": [
+    {
+      "path": "assets/fonts/ibm-plex-sans-arabic-arabic-400.woff2",
+      "subset": "arabic",
+      "weight": 400,
+      "bytes": 42848
+    },
+    {
+      "path": "assets/fonts/ibm-plex-sans-arabic-latin-400.woff2",
+      "subset": "latin",
+      "weight": 400,
+      "bytes": 19164
+    },
+    {
+      "path": "assets/fonts/ibm-plex-sans-arabic-arabic-700.woff2",
+      "subset": "arabic",
+      "weight": 700,
+      "bytes": 44280
+    },
+    {
+      "path": "assets/fonts/ibm-plex-sans-arabic-latin-700.woff2",
+      "subset": "latin",
+      "weight": 700,
+      "bytes": 19504
+    }
+  ],
+  "notes": [
+    "Responsive WebP variants generated for all local gallery images and the approved 1 (4).webp hero image.",
+    "IBM Plex Sans Arabic WOFF2 subsets are self-hosted; Google Fonts CSS and font CDN requests are removed.",
+    "The hero image preload uses the same srcset and high fetch priority as the hero image element.",
+    "The visible BAHA RADWAN brand text matches its accessible label; invalid role=group was removed from article slides.",
+    "Dark-mode primary button background now provides at least 4.5:1 contrast with white text.",
+    "GitHub Pages cache headers cannot be set by this build and must be validated on the deployed site."
+  ],
+  "html_image_tags": 25
+}
