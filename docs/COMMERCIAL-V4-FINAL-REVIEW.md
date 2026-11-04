@@ -38,3 +38,17 @@
 
 ## النشر
 هذه التغييرات موجودة على فرع `review/commercial-v4-final` فقط. لم يتم تعديل `main` ولم يتم النشر.
+
+
+## حزمة تحسين الأداء — 4 نوفمبر 2026
+- نتائج Lighthouse المحلية قبل التحسين:
+  - Mobile Navigation: Performance 95، Accessibility 100، Best Practices 100، SEO 100. FCP 2.3s، LCP 2.3s، Speed Index 2.8s، TBT 0ms، CLS 0.001.
+  - Desktop Navigation: Performance 93، وبقية الفئات 100. المؤشرات المسجلة في تقرير Desktop: FCP وLCP وSpeed Index نحو 1.3s.
+- تم إضافة آلية بناء تعمل على فرع المراجعة فقط لتوليد نسخ WebP متجاوبة لكل صور المعرض والصورة الرئيسية المعتمدة `1 (4).webp`.
+- تنشئ الآلية نسختين مناسبتين للعرض لكل صورة، وتحدّث `srcset` و`sizes`، وتضبط التحميل البطيء لصور المعرض وأولوية تحميل الصورة الرئيسية.
+- تنزّل الآلية ملفات IBM Plex Sans Arabic WOFF2 للأوزان 400 و700 وتستضيفها داخل `assets/fonts/`، ثم تزيل روابط Google Fonts الخارجية وتستخدم `font-display: swap`.
+- تصغير CSS، وضبط preload للصورة الرئيسية باستخدام `imagesrcset` و`imagesizes` و`fetchpriority=high`.
+- إصلاح مطابقة الاسم المرئي BAHA RADWAN مع الاسم الميسر، وإزالة `role=group` غير الصحيح من عناصر `article`، وتحسين تباين زر الوضع الداكن.
+- سير عمل GitHub Actions يتحقق من سلامة كل مسارات الصور والخطوط ثم يكتب الملفات الناتجة إلى هذا الفرع فقط.
+- لا يمكن استنتاج Cache-Control أو ضغط Brotli من خادم Python المحلي؛ يجب التحقق منهما بعد النشر على GitHub Pages.
+- لا تعتبر الحزمة مكتملة حتى ينجح سير العمل ويُراجع ملف `assets/optimized/image-optimization-manifest-v4.json` ونتيجة الاختبار النهائية.
